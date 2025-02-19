@@ -165,7 +165,7 @@ def deletepost(request,id):
     return profile(request,request.user.id)
 
 
-def contact_us(request):
+def user_contact_us(request):
     context={}
     if request.method == 'POST':
         name=request.POST.get('name')    

@@ -16,5 +16,5 @@ urlpatterns = [
     path("post/comment/delete/<int:id>",views.deletecomment,name="deletecomment"),
     path("post/edit/<int:id>",views.editpost,name="editpost"),
     path("post/delete/<int:id>",views.deletepost,name="deletepost"),
-    path("contact",views.contact_us,name="contact"),
+    path("contact",views.user_contact_us,name="contact"),
 ]
