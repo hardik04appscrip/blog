@@ -147,7 +147,7 @@ def editpost(request,id):
             postname = request.POST['postname']
             content = request.POST['content']
             category = request.POST['category']
-            
+            xyz = request.POST['category']
             post.postname = postname
             post.content = content
             post.category = category
@@ -168,6 +168,8 @@ def deletepost(request,id):
 def user_contact_us(request):
     context={}
     if request.method == 'POST':
+        name=request.POST.get('name')   
+        name=request.POST.get('name')   
         name=request.POST.get('name')    
         email=request.POST.get('email')  
         subject=request.POST.get('subject')  
