@@ -141,6 +141,18 @@ def deletecomment(request,id):
     return post(request,postid)
     
 def editpost(request,id):
+    """
+    Edit an existing post.
+    
+    This view retrieves a post by its ID and, if the request method is POST, updates the post's name, content, and category based on the submitted form data. The function attempts these updates within a try-except block; if an error occurs, it prints an error message and proceeds to redirect the user to their profile. For non-POST requests, it renders the post edit form populated with the current post data.
+    
+    Parameters:
+        request (HttpRequest): The incoming HTTP request.
+        id (int): The unique identifier of the post to be edited.
+    
+    Returns:
+        HttpResponse: Redirects to the profile view after a POST request or renders the 'postedit.html' template for a GET request.
+    """
     post = Post.objects.get(id=id)
     if request.method == 'POST':
         try:
@@ -166,6 +178,17 @@ def deletepost(request,id):
 
 
 def user_contact_us(request):
+    """
+    Handle contact form submissions and render the contact page.
+    
+    This view processes POST requests containing contact information from users. When a POST request is received, it retrieves the 'name', 'email', 'subject', and 'message' fields from the form data, creates a new Contact object with these values, and saves it to the database. A confirmation message is then added to the context before rendering the "contact.html" template. If the request method is not POST, the view simply renders the contact page without processing any form data.
+    
+    Parameters:
+        request (HttpRequest): The incoming HTTP request containing form data.
+    
+    Returns:
+        HttpResponse: The rendered contact page.
+    """
     context={}
     if request.method == 'POST':
         name=request.POST.get('name')   
